@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExampleComponent } from './modules/example/example.component';
 
 export const routes: Routes = [
     {
-        path: 'example',
-        component: ExampleComponent
+        path: '',
+        //component: ExampleComponent
+        loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
     }
 ];
