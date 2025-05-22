@@ -9,7 +9,7 @@ Para abrirlo:
 `ng generate component shared/SideBar` Crear un componente (en las últimas versiones van cada uno por su cuenta independientemente)
 
 ## Funcionamiento
-Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden mediante rutas, y estos modulos pueden mostrar componentes (html), los componentes pueden ser propios de cada modulo o ser compartidos (carpeta shared)
+Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden mediante rutas, y estos modulos pueden mostrar componentes (html), los componentes pueden ser propios de cada modulo o ser compartidos (carpeta shared). Los modulos pueden usar componentes y si tienen el routing (x-routing.module.ts) pueden redicirig a otros modulos/componentes con sub paths
 - src: código principal de la aplicación
 -    src/assets: contenido estático (como iconos) que usaran los archivos de la aplicación
 -    src/environments: archivos con las variables de entorno de desarrollo y producción, similar a un .env
