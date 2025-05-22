@@ -1,0 +1,67 @@
+{
+    "data": [{
+            "_id": 1,
+            "name": "cancion 1",
+            "album": "album a",
+            "cover": "localhost:3000/cover1.jpg",
+            "artist": {
+                "name": "alguien",
+                "nickname": "alguien",
+                "nationality": "ES"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track1.mp3"
+        },
+        {
+            "_id": 2,
+            "name": "cancion 2",
+            "album": "album a",
+            "cover": "localhost:3000/cover2.jpg",
+            "artist": {
+                "name": "alguien",
+                "nickname": "alguien",
+                "nationality": "ES"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track2.mp3"
+        },
+        {
+            "_id": 3,
+            "name": "cancion 3",
+            "album": "album b",
+            "cover": "localhost:3000/cover3.jpg",
+            "artist": {
+                "name": "alguien",
+                "nickname": "alguien",
+                "nationality": "ES"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track3.mp3"
+        },
+        {
+            "_id": 4,
+            "name": "cancion 4",
+            "album": "album b",
+            "cover": "localhost:3000/cover4.jpg",
+            "artist": {
+                "name": "alguien",
+                "nickname": "alguien",
+                "nationality": "ES"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track4.mp3"
+        }
+    ]
+}
