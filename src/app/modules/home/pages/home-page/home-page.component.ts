@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  standalone: true,
+  imports: [NgForOf],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
+    //Las variables que se exporten aqui podrán ser usadas por el html y demás partes del componentes
+    public items = [1,2,3,4,5];
+    public variableTardia!: string;
 
+    constructor() {}
+
+    ngOnInit(): void {
+      console.log("componente inicializado");
+      this.variableTardia = "aaa";
+    }
 }

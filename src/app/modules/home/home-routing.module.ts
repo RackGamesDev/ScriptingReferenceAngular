@@ -4,7 +4,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'pagina/:id',
     component: HomePageComponent
     //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   }
