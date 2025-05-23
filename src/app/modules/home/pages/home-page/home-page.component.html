@@ -1,8 +1,16 @@
 <p>home-page works! esto es lo que hay en el componente homepage del modulo home</p>
 <ul>
-    <li *ngFor="let item of items">{{ item }}</li> <!--Bucle foreach que repite el elemento por cada item, está usando una variable exportada por el componente-->
-    {{ variableTardia.charAt(2) }} <!--Se puede usar codigo javascript aquí, que se ejecuta en el servidor-->
+    <li *ngFor="let item of items">{{ item }}</li> <!--Bucle foreach que repite el elemento por cada item, esta usando una variable exportada por el componente-->
+    {{ variableTardia.charAt(2) }} <!--Se puede usar codigo javascript aqui, que se ejecuta en el servidor-->
 </ul>
 <app-boton></app-boton> <!--Selector html inventado que renderiza un componente ya creado-->
-<!--En este caso estaría renderizando aquí el componente de menú aparte del componente base, ya que así se especificó en el home-routing.module-->
-<router-outlet name="menu-outlet"></router-outlet> <!--Componente que se encarga de cargar el componente que se le pase por la ruta (necesita importarse también), para que cargue en todas las páginas habría que ponerlo en el html inicial-->
+<!--En este caso estaria renderizando aqui el componente de menu aparte del componente base, ya que asi se especifico en el home-routing.module-->
+<router-outlet name="menu-outlet"></router-outlet> <!--Componente que se encarga de cargar el componente que se le pase por la ruta (necesita importarse tambien), para que cargue en todas las paginas habria que ponerlo en el html inicial-->
+
+<div *ngIf="variableTardia === 'aaa'">si</div> <!--Renderizando una etiqueta si una condicion es cierta-->
+
+<ng-template #etiquetas> <!--Creando una plantilla-->
+    <h4>ejemplo aaa</h4>
+</ng-template>
+<ng-container *ngTemplateOutlet="etiquetas"></ng-container> <!--Copiando el contenido de la plantilla-->
+<ng-container *ngTemplateOutlet="etiquetas"></ng-container>
