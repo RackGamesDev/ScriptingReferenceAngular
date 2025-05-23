@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass], //Importando funciones para el componente
+  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule], //Importando funciones para el componente
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
