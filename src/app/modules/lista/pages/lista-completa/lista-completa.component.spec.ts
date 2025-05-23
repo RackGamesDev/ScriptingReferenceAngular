@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MediaPlayerComponent } from './media-player.component';
+import { ListaCompletaComponent } from './lista-completa.component';
 
-describe('MediaPlayerComponent', () => {
-  let component: MediaPlayerComponent;
-  let fixture: ComponentFixture<MediaPlayerComponent>;
+describe('ListaCompletaComponent', () => {
+  let component: ListaCompletaComponent;
+  let fixture: ComponentFixture<ListaCompletaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MediaPlayerComponent]
+      imports: [ListaCompletaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MediaPlayerComponent);
+    fixture = TestBed.createComponent(ListaCompletaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

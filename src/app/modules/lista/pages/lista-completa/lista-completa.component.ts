@@ -1,0 +1,12 @@
+import { NgForOf } from '@angular/common';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-lista-completa',
+  imports: [NgForOf],
+  templateUrl: './lista-completa.component.html',
+  styleUrl: './lista-completa.component.css'
+})
+export class ListaCompletaComponent {
+  public lista = ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj"];
+}
