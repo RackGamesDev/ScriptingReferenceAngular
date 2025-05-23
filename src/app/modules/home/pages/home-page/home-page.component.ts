@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForOf } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [NgForOf],
+  imports: [NgForOf, RouterOutlet, BotonComponent], //Importando funciones para el componente
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
