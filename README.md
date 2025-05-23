@@ -14,6 +14,7 @@ Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden 
 -    src/assets: contenido estático (como iconos) que usaran los archivos de la aplicación
 -    src/environments: archivos con las variables de entorno de desarrollo y producción, similar a un .env
 -    src/app/data: archivos de datos como json, se puede usar como reemplazo temporal para pruebas de apis o bases de datos
+-    src/app/core/models: modelos para los objetos que manejará la aplicación y la supuesta base de datos
 -    src/app/modules: los módulos que se crean con los comandos
 -    src/app/shared: contenido compartido entre módulos, normalmente los componentes también creados con comandos
 -    src/app/app.routes.ts: configuración de que ruta va con cada módulo
