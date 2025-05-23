@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-boton', //Creando un selector nuevo html para renderizar el componente donde sea
@@ -11,4 +11,5 @@ export class BotonComponent implements OnInit {
   ngOnInit(): void {
     console.log("componente inicializado");
   }
+  @Input() public texto:string = '';
 }
