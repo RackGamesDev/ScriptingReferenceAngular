@@ -11,7 +11,7 @@ import { BotonComponent } from "../../../../shared/components/boton/boton.compon
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-    //Las variables que se exporten aqui podrán ser usadas por el html y demás partes del componentes
+    //Las variables que se exporten aqui podran ser usadas por el html y demas partes del componentes
     public items = [1,2,3,4,5];
     public variableTardia!: string;
 

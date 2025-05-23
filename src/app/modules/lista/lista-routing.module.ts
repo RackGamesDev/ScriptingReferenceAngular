@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ListaCompletaComponent,
     children: [
       {
-        path: ':id', //Pasar un parámetro por la url, esta ruta también se podría haber escrito en el módulo home
+        path: ':id', //Pasar un parametro por la url, esta ruta tambien se podria haber escrito en el modulo home
         component: ListaEspecificaComponent
       },
       {
