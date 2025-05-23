@@ -14,8 +14,8 @@
 <!--En este caso estaria renderizando aqui el componente de menu aparte del componente base, ya que asi se especifico en el home-routing.module-->
 <router-outlet name="menu-outlet"></router-outlet> <!--Componente que se encarga de cargar el componente que se le pase por la ruta (necesita importarse tambien), para que cargue en todas las paginas habria que ponerlo en el html inicial-->
 
-<ng-template #etiquetas> <!--Creando una plantilla-->
-    <h4>ejemplo aaa</h4>
+<ng-template #etiquetas let-variable="variable"> <!--Creando una plantilla, puede tener variables-->
+    <h4>ejemplo {{ variable }}</h4>
 </ng-template>
-<ng-container *ngTemplateOutlet="etiquetas"></ng-container> <!--Copiando el contenido de la plantilla-->
-<ng-container *ngTemplateOutlet="etiquetas"></ng-container>
+<ng-container *ngTemplateOutlet="etiquetas; context: {variable: 'aa'}"></ng-container> <!--Copiando el contenido de la plantilla-->
+<ng-container *ngTemplateOutlet="etiquetas; context: {variable: 'bb'}"></ng-container>
