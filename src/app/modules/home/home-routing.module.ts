@@ -5,22 +5,22 @@ import { MenuComponent } from '@shared/components/menu/menu.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomePageComponent,
-    children: [ //Aquí se especifican los subcomponentes
+    path: '', //Al no poner nada se usa la raíz
+    component: HomePageComponent, //El componente que se renderizará en esa ruta
+    children: [ //En caso de usar subcomponentes (outlets) se ponen aquí
       {
         path: '',
         component: MenuComponent,
-        outlet: 'menu-outlet' //Siendo un outlet, no se carga el componente accediendo mediante la ruta sino renderizándolo en otr componente
+        outlet: 'menu-outlet'
       }
     ]
-    //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'lista',
-    //component: 
-    loadChildren: () => import('../lista/lista.module').then(m => m.ListaModule)
+    loadChildren: () => import('../lista/lista.module').then(m => m.ListaModule), //Cargando un módulo en lugar de un componente, de forma lazy
+    
   }
+
 ];
 
 @NgModule({

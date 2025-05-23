@@ -3,5 +3,6 @@
     <li *ngFor="let item of items">{{ item }}</li> <!--Bucle foreach que repite el elemento por cada item, está usando una variable exportada por el componente-->
     {{ variableTardia.charAt(2) }} <!--Se puede usar codigo javascript aquí, que se ejecuta en el servidor-->
 </ul>
-<router-outlet name="menu-outlet"></router-outlet> <!--Componente que se encarga de cargar el componente que se le pase por la ruta (necesita importarse también)-->
+<app-boton></app-boton> <!--Selector html inventado que renderiza un componente ya creado-->
 <!--En este caso estaría renderizando aquí el componente de menú aparte del componente base, ya que así se especificó en el home-routing.module-->
+<router-outlet name="menu-outlet"></router-outlet> <!--Componente que se encarga de cargar el componente que se le pase por la ruta (necesita importarse también), para que cargue en todas las páginas habría que ponerlo en el html inicial-->
