@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { LowerCasePipe, NgClass, NgForOf, NgIf, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
 import { Router } from '@angular/router';
+import { OrderListPipe } from '@shared/pipes/order-list.pipe';
+import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule], //Importando funciones para el componente
+  //Importando funciones para el componente
+  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule, UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective], 
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
