@@ -3,6 +3,7 @@ import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -12,15 +13,21 @@ import { CancionModel } from '@core/models/cancion.model';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-    //Las variables que se exporten aqui podran ser usadas por el html y demas partes del componentes
+    //Las variables que se exporten aqui podran ser usadas por el html y demas partes del componente
     public items = [1,2,3,4,5];
     public textos = ['aa', 'bb', 'cc', 'dd', 'ee'];
     public variableTardia!: string;
     public canciones: { data: Array<CancionModel> } = require('src/app/data/canciones.json'); //Importando un json en base al modelo
-    constructor() {}
+
+    constructor(private router:Router) {}
 
     ngOnInit(): void {
       console.log("componente inicializado");
       this.variableTardia = "aaa";
+    }
+
+    funcion($event: Event): void { //Esta funcion se puede llamar desde el html (el $ no hace nada)
+      console.log("funcion llamada " + $event); //Event tiene informaicon del evento que llamo desde el html
+      this.router.navigate(['/lista'], {queryParams: {variable: 'hola', numero: 4}}); //Redirecciona a la ruta de login usando el router del constructor (/lista?variable=hola&numero=4)
     }
 }

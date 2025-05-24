@@ -4,7 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
+    "paths": { //Para acceder rapidamente a cierta ruta
       "@core/*": ["src/app/core/*"],
       "@shared/*": ["src/app/shared/*"],
       "@data/*": ["src/app/data/*"],
