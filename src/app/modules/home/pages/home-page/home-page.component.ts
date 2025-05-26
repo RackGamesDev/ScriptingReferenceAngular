@@ -6,8 +6,10 @@ import { CancionModel } from '@core/models/cancion.model';
 import { Router } from '@angular/router';
 import { OrderListPipe } from '@shared/pipes/order-list.pipe';
 import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
-import { AutentificacionService } from '@shared/services/autentificacion.service';
+import { AutentificacionService } from '@shared/services/autentificacion/autentificacion.service';
 import { Subscription } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,7 +21,7 @@ import { Subscription } from 'rxjs';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   //Inyeccion de dependencias al componente
-  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService) {
     if (isPlatformBrowser(this.platformId)) {
       console.log('ejecutando en el navegador');
     }
@@ -55,16 +57,22 @@ export class HomePageComponent implements OnInit, OnDestroy {
       const observadorNumeros: Subscription = this.autentificacionService.numerosAleatorios.subscribe({next:(response: number[]) => { //Suscribiendose a un observable con funcion
         response.forEach((numero: number) => console.log(numero));
       }, complete: () => {console.log("fin de emisiones")}, error: (e: any) => {console.warn(e)}}); //Ademas, estableciendo eventos cuando deje de emitir finalmente o cuando de error
-      
       observadorNumeros.unsubscribe();
     }
     //suscripcionesFuncion();
+
+    const subscripcionPeticion:Subscription = this.clientePeticionesService.recibirDatos().subscribe({ next: (response: any) => { //Suscribiendose a la peticion del servicio, para responder cuando devuelva los datos
+      console.log(response); //Contiene el body de la respuesta en json
+    }, error: (e: any) => { //Capturando errores
+      console.error("Error en la peticion API: " + e);
+    }, complete: () => { //Cuando finalice la peticion
+      console.log("Peticion API finalizada");
+    }});
   }
+
   ngOnDestroy(): void { //Cuando se destruya el componente (cuando se navega a otra ruta o se elimina)
     console.log("componente destruido");
   } //Tambien estan ngOnChanges, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked
-
-
 
   funcion(event: Event): void { //Esta funcion se puede llamar desde el html
     console.log("funcion llamada " + event); //Event tiene informaicon del evento que llamo desde el html
