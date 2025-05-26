@@ -10,6 +10,9 @@ import { AutentificacionService } from '@shared/services/autentificacion/autenti
 import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
+import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm install ngx-cookie-service --save
+
+
 
 @Component({
   selector: 'app-home-page',
@@ -21,7 +24,7 @@ import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cl
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   //Inyeccion de dependencias al componente
-  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {
     if (isPlatformBrowser(this.platformId)) {
       console.log('ejecutando en el navegador');
     }
@@ -79,5 +82,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   funcion(event: Event): void { //Esta funcion se puede llamar desde el html
     console.log("funcion llamada " + event); //Event tiene informaicon del evento que llamo desde el html
     this.router.navigate(['/lista'], { queryParams: { variable: 'hola', numero: 4 } }); //Redirecciona a la ruta de login usando el router del constructor (/lista?variable=hola&numero=4)
+  
+    this.cookieService.set('nombre', 'valor', Date.now() + 1); //Guardando una cookie que expira magnana, legalmente hay que avisar y pedir permiso
+    console.log(this.cookieService.get('nombre'));
   }
 }
