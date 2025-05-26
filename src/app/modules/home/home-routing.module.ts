@@ -4,7 +4,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MenuComponent } from '@shared/components/menu/menu.component';
 import { FormularioComponent } from './pages/formulario/formulario.component';
 import { PrivadoComponent } from './pages/privado/privado.component';
-import { sessionGuard } from '@core/guards/session.guard';
+import { sessionGuard } from '@core/guards/session/session.guard';
 
 const routes: Routes = [
   {

@@ -10,7 +10,8 @@ Para usarlo:
 - `ng generate pipe shared/pipes/order-list/orderList` Crear un pipe (clases para transformar datos en otros llamables fácilmente desde cualquier lado)
 - `ng generate directive shared/directives/ImgBroken` Crea una directiva (un archivo con normas y comportamientos agregables mediante atributo a una etiqueta)
 - `ng generate service shared/services/autentificacion/Autentificacion` Crea un servicio dentro del módulo (una clase con distintas funciones y variables para un uso concreto que se puede ir usando por la aplicación)
-- `ng generate guard core/guards/Session` (CanActivate) Crea un guard típico (comprobante para proteger una ruta)
+- `ng generate guard core/guards/session/Session` (CanActivate) Crea un guard típico (comprobante para proteger una ruta)
+- `ng generate interceptor core/interceptors/inject-session/InjectSession` Crea un middleware para alterar las peticiones http
 
 ## Funcionamiento
 Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden mediante rutas, y estos modulos pueden mostrar componentes (html), los componentes pueden ser propios de cada modulo o ser compartidos (carpeta shared). Los modulos pueden usar componentes y si tienen el routing (x-routing.module.ts) pueden redicirig a otros modulos/componentes con sub paths
@@ -20,6 +21,7 @@ Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden 
 -    src/app/data: archivos de datos como json, se puede usar como reemplazo temporal para pruebas de apis o bases de datos
 -    src/app/core/models: modelos para los objetos que manejará la aplicación y la supuesta base de datos
 -    src/app/core/guard: código con condiciones para determinar si se da acceso a una ruta o no (se usa en el routing)
+-    src/app/core/interceptors: middlewares que alteran las propiedades de las peticiones http
 -    src/app/modules: los módulos que se crean con los comandos
 -    src/app/shared/components: componentes compartidos en toda la aplicación
 -    src/app/shared/pipes: archivos con las clases de los pipes
