@@ -4,10 +4,12 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
 import { Router } from '@angular/router';
-import { OrderListPipe } from '@shared/pipes/order-list.pipe';
+import { OrderListPipe } from '@shared/pipes/order-list/order-list.pipe';
 import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
-import { AutentificacionService } from '@shared/services/autentificacion.service';
+import { AutentificacionService } from '@shared/services/autentificacion/autentificacion.service';
 import { Subscription } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,7 +21,7 @@ import { Subscription } from 'rxjs';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   //Inyeccion de dependencias al componente
-  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService) {
     if (isPlatformBrowser(this.platformId)) {
       console.log('ejecutando en el navegador');
     }
@@ -41,11 +43,31 @@ export class HomePageComponent implements OnInit, OnDestroy {
     AutentificacionService.incrementarNumero(); //Llamando a una funcion de un servicio
     console.log(AutentificacionService.getNumero());
 
-    const observador:Subscription = this.autentificacionService.callback.subscribe((response: string) => { //Subscibiendose a un evento en un servicio, la funcion se ejecutara cada vez que se emita desde cualquier lado
+    const observador: Subscription = this.autentificacionService.callback.subscribe((response: string) => { //Subscibiendose a un evento en un servicio, la funcion se ejecutara cada vez que se emita desde cualquier lado
       console.log("Se emitio al evento con " + response);
     });
     this.autentificacionService.callback.emit("hola"); //Emitiendo al evento, por lo que se ejecutaran las funciones donde se haya suscrito a este
     observador.unsubscribe(); //Desuscribiendose del evento, para que no se ejecute mas (se suele hace en ngOnDestroy para que no se quede consumiendo)
+    const observadorTextos: Subscription = this.autentificacionService.textos.subscribe((response: string[]) => { //Suscribiendose a un observable, una variable que emite informacion
+      console.log("es " + response);
+    });
+    observadorTextos.unsubscribe();
+
+    const suscripcionesFuncion = async () => { //En algunos casos ciertas suscripciones deben ser asincronas
+      const observadorNumeros: Subscription = this.autentificacionService.numerosAleatorios.subscribe({next:(response: number[]) => { //Suscribiendose a un observable con funcion
+        response.forEach((numero: number) => console.log(numero));
+      }, complete: () => {console.log("fin de emisiones")}, error: (e: any) => {console.warn(e)}}); //Ademas, estableciendo eventos cuando deje de emitir finalmente o cuando de error
+      observadorNumeros.unsubscribe();
+    }
+    //suscripcionesFuncion();
+
+    const subscripcionPeticion:Subscription = this.clientePeticionesService.recibirDatos().subscribe({ next: (response: any) => { //Suscribiendose a la peticion del servicio, para responder cuando devuelva los datos
+      console.log(response); //Contiene el body de la respuesta en json
+    }, error: (e: any) => { //Capturando errores
+      console.error("Error en la peticion API: " + e);
+    }, complete: () => { //Cuando finalice la peticion
+      console.log("Peticion API finalizada");
+    }});
   }
 
   ngOnDestroy(): void { //Cuando se destruya el componente (cuando se navega a otra ruta o se elimina)
