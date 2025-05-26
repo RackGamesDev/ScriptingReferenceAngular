@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { LowerCasePipe, NgClass, NgForOf, NgIf, NgTemplateOutlet, UpperCasePipe, isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
 import { Router } from '@angular/router';
@@ -10,6 +10,9 @@ import { AutentificacionService } from '@shared/services/autentificacion/autenti
 import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
+import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm install ngx-cookie-service --save
+
+
 
 @Component({
   selector: 'app-home-page',
@@ -21,7 +24,7 @@ import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cl
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   //Inyeccion de dependencias al componente
-  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService) {
+  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {
     if (isPlatformBrowser(this.platformId)) {
       console.log('ejecutando en el navegador');
     }
@@ -39,6 +42,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ngOnInit(): void { //Cuando se inicialice el componente
     console.log("componente inicializado");
     this.variableTardia = "aaa"; //Inicializando la variable
+
+    console.log(this.activatedRoute.snapshot.queryParamMap.get('id') || 'no hay id en la url'); //Obteniendo los parametros de la url (/?id=1)
 
     AutentificacionService.incrementarNumero(); //Llamando a una funcion de un servicio
     console.log(AutentificacionService.getNumero());
@@ -77,5 +82,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   funcion(event: Event): void { //Esta funcion se puede llamar desde el html
     console.log("funcion llamada " + event); //Event tiene informaicon del evento que llamo desde el html
     this.router.navigate(['/lista'], { queryParams: { variable: 'hola', numero: 4 } }); //Redirecciona a la ruta de login usando el router del constructor (/lista?variable=hola&numero=4)
+  
+    this.cookieService.set('nombre', 'valor', Date.now() + 1); //Guardando una cookie que expira magnana, legalmente hay que avisar y pedir permiso
+    console.log(this.cookieService.get('nombre'));
   }
 }
