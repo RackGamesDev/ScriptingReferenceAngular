@@ -21,6 +21,7 @@ export class ClientePeticionesService {
     //.pipe(map((dataRaw:any) => {dataRaw?.fact})); //Usando tanto el operador map como el pipe para sacar el fact
     /*MapApiPipe.apply(dataRaw)*/
     //Es posible que para que esto funcione haya que importar el HttpClientModule en el app.module.ts o en app.config.ts
+    //Para indicar que la peticion usa un token se pone: {headers: new HttpHeaders({authorization: 'Bearer ' + token})}  como segundo parametro
   }
 
   mandarDatos(body:any): Observable<any> {
