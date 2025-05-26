@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AutentificacionService {
       if (Math.random() > 0.7) observer.complete(); //Cerrando finalmente, indicando que ya no se emitira nada mas 
       if (Math.random() > 0.9) observer.error("Error de emision"); //Emitiendo un error, que se puede capturar en el suscriptor
     }, 2000);
-  });
+  }).pipe(map(e => {return e.reverse()})); //Usando pipes de rxjs para transformar el dato emitido una vez emitido
 
   constructor() { 
     this.textos = of(['texto1', 'texto2', 'texto3']); //El servicio se encarga de alimentar a la variable

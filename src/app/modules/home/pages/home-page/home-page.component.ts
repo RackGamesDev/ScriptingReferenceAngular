@@ -4,7 +4,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
 import { Router } from '@angular/router';
-import { OrderListPipe } from '@shared/pipes/order-list.pipe';
+import { OrderListPipe } from '@shared/pipes/order-list/order-list.pipe';
 import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
 import { AutentificacionService } from '@shared/services/autentificacion/autentificacion.service';
 import { Subscription } from 'rxjs';

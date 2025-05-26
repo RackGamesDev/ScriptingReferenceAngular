@@ -7,7 +7,7 @@ Para usarlo:
 - `ng serve`  (localhost:4200) (`ng s --port=4201`) (`ng s --host =0.0.0.0 --port=4201`)
 - `ng generate module modules/Auth --routing` Crear un modulo, en este caso uno que maneja rutas (esto genera distintos archivos)
 - `ng generate component shared/SideBar` Crear un componente (en las últimas versiones van cada uno por su cuenta independientemente)
-- `ng generate pipe shared/pipes/orderList` Crear un pipe (clases para transformar datos en otros llamables fácilmente desde cualquier lado)
+- `ng generate pipe shared/pipes/order-list/orderList` Crear un pipe (clases para transformar datos en otros llamables fácilmente desde cualquier lado)
 - `ng generate directive shared/directives/ImgBroken` Crea una directiva (un archivo con normas y comportamientos agregables mediante atributo a una etiqueta)
 - `ng generate service shared/services/autentificacion/Autentificacion` Crea un servicio dentro del módulo (una clase con distintas funciones y variables para un uso concreto que se puede ir usando por la aplicación)
 
