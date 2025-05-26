@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://catfact.ninja/fact'
+    apiUrlGet: 'https://catfact.ninja/fact',
+    apiUrlPost: 'https://jsonplaceholder.typicode.com/posts',
 }

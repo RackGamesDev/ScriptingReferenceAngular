@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { AutentificacionService } from '@shared/services/autentificacion/autentificacion.service';
 
 @Component({
   selector: 'app-formulario',
@@ -12,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 export class FormularioComponent {
   formulario: FormGroup = new FormGroup({});
 
-  constructor(private router:Router) {}
+  constructor(private router:Router, private autentificacionService:AutentificacionService) {}
   
   ngOnInit():void {
     this.formulario = new FormGroup({ //Generando las normas para el formulario
@@ -30,7 +31,8 @@ export class FormularioComponent {
     if (this.formulario.valid) {
       alert('Formulario enviado correctamente');
       //Enviar los datos a donde sea y redirigir a otro sitio
-      this.router.navigate(['/lista'], {queryParams: body});
+      this.autentificacionService.procesarFormulario(body); //Guardar los datos en el servicio de autentificacion
+      this.router.navigate(['/lista'], {queryParams: body}); //En este caso se envian los datos al servicio para ser procesados (se podrian enviar mediante http desde aqui o desde el servicio)
     } else {
       alert('Formulario no valido');
     }

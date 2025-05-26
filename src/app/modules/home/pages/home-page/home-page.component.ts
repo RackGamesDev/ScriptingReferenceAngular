@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { LowerCasePipe, NgClass, NgForOf, NgIf, NgTemplateOutlet, UpperCasePipe, isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cl
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   //Inyeccion de dependencias al componente
-  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService) {
+  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute) {
     if (isPlatformBrowser(this.platformId)) {
       console.log('ejecutando en el navegador');
     }
@@ -39,6 +39,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ngOnInit(): void { //Cuando se inicialice el componente
     console.log("componente inicializado");
     this.variableTardia = "aaa"; //Inicializando la variable
+
+    console.log(this.activatedRoute.snapshot.queryParamMap.get('id') || 'no hay id en la url'); //Obteniendo los parametros de la url (/?id=1)
 
     AutentificacionService.incrementarNumero(); //Llamando a una funcion de un servicio
     console.log(AutentificacionService.getNumero());
