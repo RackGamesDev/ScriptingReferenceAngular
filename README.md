@@ -9,6 +9,7 @@ Para usarlo:
 - `ng generate component shared/SideBar` Crear un componente (en las últimas versiones van cada uno por su cuenta independientemente)
 - `ng generate pipe shared/pipes/orderList` Crear un pipe (clases para transformar datos en otros llamables fácilmente desde cualquier lado)
 - `ng generate directive shared/directives/ImgBroken` Crea una directiva (un archivo con normas y comportamientos agregables mediante atributo a una etiqueta)
+- `ng generate service modules/home/services/Autentificacion` Crea un servicio dentro del módulo ()
 
 ## Funcionamiento
 Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden mediante rutas, y estos modulos pueden mostrar componentes (html), los componentes pueden ser propios de cada modulo o ser compartidos (carpeta shared). Los modulos pueden usar componentes y si tienen el routing (x-routing.module.ts) pueden redicirig a otros modulos/componentes con sub paths
@@ -22,6 +23,9 @@ Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden 
 -    src/app/shared/pipes: archivos con las clases de los pipes
 -    src/app/shared/directives: archivos con las directivas (normas sobre etiquetas)
 -    src/app/app.routes.ts: configuración de que ruta va con cada módulo
+-    src/app/modules/algunmodulo/pages: distintos componentes base del módulo
+-    src/app/modules/algunmodulo/components: subcomponentes exclusivos del módulo
+-    src/app/modules/algunmodulo/services: 
 - public: contenido estático
 - angular.json: configuración de Angular
 - package.json: configuración de NodeJS
