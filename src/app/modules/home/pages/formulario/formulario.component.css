@@ -1,0 +1,17 @@
+form input {
+    background-color: white;
+    color: black;
+}
+/*Clase para los campos que fallen el validador*/
+form.ng-invalid { 
+    background-color: brown;
+}
+form input.ng-invalid {
+    color: red !important;
+}
+input.ng-valid { /*Campos validos*/
+    border: 3px solid green;
+}
+input.ng-touched { /*Campos que han sido modificados*/
+    border: 3px solid black;
+}
