@@ -7,7 +7,7 @@ export const sessionGuard: CanActivateFn = (route, state) => {
   const cookieService = inject(CookieService); //Como este archivo devuelve una funcion, se usa inject para los servicios (sin constructor)
   const router = inject(Router); //Inyectando el router para redirigir si no se cumple la condicion
   console.log(state);
-  if (cookieService.get('nombre') === 'value') {
+  if (cookieService.get('nombre') === 'valor') {
     return true; // Deja pasar solo si esa cookie tiene ese valor
   } else {
     console.log("Acceso denegado por el guard en " + route);

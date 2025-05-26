@@ -27,13 +27,13 @@ const routes: Routes = [
     component: FormularioComponent,
   },
   {
-    path: '**', //Cualquier ruta que no coincida con las anteriores, util para 404
-    redirectTo: '' //Redirige a otro path
-  },
-  {
-    path: '/privado',
+    path: 'privado',
     component: PrivadoComponent,
     canActivate: [sessionGuard] //Protegiendo la ruta con un guard, comprueba si x usuario puede entrar o no (pueden haber varios guards y de varios tipos)
+  },
+  {
+    path: '**', //Cualquier ruta que no coincida con las anteriores, util para 404
+    redirectTo: '' //Redirige a otro path
   }
 ];
 
