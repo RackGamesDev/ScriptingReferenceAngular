@@ -1,0 +1,15 @@
+<p>formulario especial</p>
+<form [formGroup]="formulario" (ngSubmit)="enviar()"> <!--Usando el objeto formGroup del componente, manda el json de los datos a una funcion typescript-->
+    <h3>aa</h3>
+    <input type="text" name="texto" formControlName="texto"> <!--Vinculando cada propiedad a cada campo del formulario, si falla tanto el campo como el formulario tienen la clase ng-invalid-->
+    <input type="number" name="numero" formControlName="numero">
+    <input type="checkbox" name="siono" formControlName="siono">
+    <input type="text" name="direccion" formControlName="direccion">
+    <input [disabled]="formulario.invalid" type="submit" value="enviar">
+</form>
+<div>
+    <br><br>
+    <p>El formulario tiene: {{ formulario.value | json }}</p><!--Json con los valores del formulario, se actualiza solo (es reactivo)-->
+    <p>El formulario es aceptable: {{ formulario.valid }}</p><!--Si el formulario se puede enviar-->
+    <!--Hay muchas mas propiedades para el formulario o los campos-->
+</div>
