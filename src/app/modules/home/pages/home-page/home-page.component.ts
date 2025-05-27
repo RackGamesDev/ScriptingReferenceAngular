@@ -26,6 +26,7 @@ import { of } from 'rxjs';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit, OnDestroy {
+[x: string]: any;
   //Inyeccion de dependencias al componente
   constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {
     if (isPlatformBrowser(this.platformId)) {
