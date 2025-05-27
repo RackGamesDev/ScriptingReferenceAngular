@@ -1,11 +1,12 @@
 <p>home-page works! esto es lo que hay en el componente homepage del modulo home</p>
 <!--Las etiquetas script no van aqui, el codigo se escribe en el .ts-->
 
-<ul>
-    <li *ngFor="let item of items">{{ item }}</li> <!--Bucle foreach que repite el elemento por cada item, esta usando una variable exportada por el componente-->
-    {{ variableTardia.charAt(2) }} <!--Se puede usar codigo javascript aqui, que se ejecuta en el servidor-->
-</ul>
 <div *ngIf="variableTardia === 'aaa'">si</div> <!--Renderizando una etiqueta si una condicion es cierta-->
+<ul> <!--Bucle foreach que repite el elemento por cada item, esta usando una variable exportada por el componente-->
+    <li *ngFor="let item of items; let indice = index; let primero = first; let ultimo = last">{{ item }}  {{ indice }} <div *ngIf="primero">primero</div><div *ngIf="ultimo">ultimo</div></li> 
+    {{ variableTardia.charAt(2) }} <!--Se puede usar codigo javascript aqui, que se ejecuta en el servidor-->
+    
+</ul>
 <div [ngClass]="['unaclase', 'otraclase', variableTardia]">a</div> <!--Con ngClass se puede especificar el array de clases-->
 <div [ngClass]="textos">a</div> <!--Usando un array directamente-->
 <!--{{ canciones.data[0].name }}     Usando un objeto que viene de un json y ademas cumple un model--><br>
