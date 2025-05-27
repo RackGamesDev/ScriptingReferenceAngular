@@ -11,6 +11,7 @@
 {{ canciones.data[0].name }} <!--Usando un objeto que viene de un json y ademas cumple un model--><br>
 {{ variableTardia | lowercase | uppercase }} <!--Usando un pipe por defecto (clases que transforman un dato en otro) (hay muchos por defecto)--><br>
 {{ items | orderList:'a':'b' }} <!--Usando un pipe de la carpeta pipes y argumentos-->
+{{ valorLento | async }} <!--Imprimiendo un valor que se consigue de manera asincrona mediante promesa o suscripcion-->
 <img appImgBroken [respaldo]="'https://placehold.co/30'" src="no">
 
 <app-boton [texto]="'titulo'" (callbackDatos)="recibirDatosBoton($event)"></app-boton> <!--Selector html inventado que renderiza un componente ya creado, en este caso usa una propiedad, ademas usa un callback a este componente-->

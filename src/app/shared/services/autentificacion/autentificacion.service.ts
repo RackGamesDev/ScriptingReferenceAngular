@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ClientePeticionesService } from '../cliente-peticiones/cliente-peticiones.service';
 
@@ -49,6 +49,15 @@ export class AutentificacionService {
       if (Math.random() > 0.9) observer.error("Error de emision"); //Emitiendo un error, que se puede capturar en el suscriptor
     }, 2000);
   }).pipe(map(e => {return e.reverse()})); //Usando pipes de rxjs para transformar el dato emitido una vez emitido
+
+  behaviors():void {
+    const subject:BehaviorSubject<string> = new BehaviorSubject<string>(''); //Es un observable y un observeer a la vez
+    subject.subscribe((value) => { //Recibiendo datos
+      console.log("Valor emitido: " + value);
+    });
+    subject.next('Nuevo valor'); //Emitiendo un dato
+  }
+
 
   constructor(private clientePeticionesService:ClientePeticionesService) { 
     this.textos = of(['texto1', 'texto2', 'texto3']); //El servicio se encarga de alimentar a la variable
