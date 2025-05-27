@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css'; /*Importando bootstrap (npm install bootstrap)*/
 :root {
     --ion-color-primary: #3880ff;
     --ion-color-primary-rgb: 56, 128, 255;
