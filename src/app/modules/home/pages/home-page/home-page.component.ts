@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
-import { LowerCasePipe, NgClass, NgForOf, NgIf, NgTemplateOutlet, UpperCasePipe, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID, OnDestroy, EventEmitter, Output } from '@angular/core';
+import { AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgIf, NgTemplateOutlet, UpperCasePipe, isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
 import { CancionModel } from '@core/models/cancion.model';
@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
 import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm install ngx-cookie-service --save
+import { FormsModule, NgForm } from '@angular/forms';
+import { of } from 'rxjs';
 
 
 
@@ -18,7 +20,8 @@ import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm
   selector: 'app-home-page',
   standalone: true,
   //Importando funciones para el componente
-  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule, UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective],
+  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule, 
+    UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective, FormsModule, AsyncPipe],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
@@ -38,6 +41,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public textos = ['aa', 'bb', 'cc', 'dd', 'ee'];
   public variableTardia!: string;
   public canciones: { data: Array<CancionModel> } = require('src/app/data/canciones.json'); //Importando un json en base al modelo
+  public valorLento = of("hola"); //Valor que en teoria tarda en conseguirse (asincrono)
 
   ngOnInit(): void { //Cuando se inicialice el componente
     console.log("componente inicializado");
@@ -86,4 +90,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.cookieService.set('nombre', 'valor', Date.now() + 1); //Guardando una cookie que expira magnana, legalmente hay que avisar y pedir permiso
     console.log(this.cookieService.get('nombre'));
   }
+
+  variableVinculada:string = "aa"; //Variable vinculada al input del html con ngModel, si se actualiza una cambia la otra (bidireccional)
+  actualizarInput(event:any):void {console.log(this.variableVinculada, event);} //Tambien se le puede asignar un evento
+
+  recibirDatosBoton(evento:any):void{ //Funcion de callback del boton personalizado, esta hecho para que el boton (subcomponente) pueda enviar datos a este componente padre
+    console.log("Desde el componente padre" + evento);
+  }
+  
 }
