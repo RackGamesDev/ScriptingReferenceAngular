@@ -36,7 +36,6 @@ Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden 
 - package.json: configuración de NodeJS
 - tsconfig.json: configuración del compilador de Typescript
 
-
 ## License
 This project is licensed under the GNU General Public License v3.0.  
 See the [LICENSE](./LICENSE.txt) file for details.
