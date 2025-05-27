@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { LowerCasePipe, NgClass, NgForOf, NgIf, NgTemplateOutlet, UpperCasePipe, isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BotonComponent } from "../../../../shared/components/boton/boton.component";
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
 import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm install ngx-cookie-service --save
+import { FormsModule, NgForm } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm
   selector: 'app-home-page',
   standalone: true,
   //Importando funciones para el componente
-  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule, UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective],
+  imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule, 
+    UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective, FormsModule],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
@@ -86,4 +88,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.cookieService.set('nombre', 'valor', Date.now() + 1); //Guardando una cookie que expira magnana, legalmente hay que avisar y pedir permiso
     console.log(this.cookieService.get('nombre'));
   }
+
+  variableVinculada:string = "aa"; //Variable vinculada al input del html con ngModel, si se actualiza una cambia la otra (bidireccional)
+  actualizarInput(event:any):void {console.log(this.variableVinculada, event);} //Tambien se le puede asignar un evento
+
+  recibirDatosBoton(evento:any):void{ //Funcion de callback del boton personalizado, esta hecho para que el boton (subcomponente) pueda enviar datos a este componente padre
+    console.log("Desde el componente padre" + evento);
+  }
+  
 }

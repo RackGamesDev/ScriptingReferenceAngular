@@ -13,7 +13,7 @@
 {{ items | orderList:'a':'b' }} <!--Usando un pipe de la carpeta pipes y argumentos-->
 <img appImgBroken [respaldo]="'https://placehold.co/30'" src="no">
 
-<app-boton [texto]="'titulo'"></app-boton> <!--Selector html inventado que renderiza un componente ya creado, en este caso usa una propiedad-->
+<app-boton [texto]="'titulo'" (callbackDatos)="recibirDatosBoton($event)"></app-boton> <!--Selector html inventado que renderiza un componente ya creado, en este caso usa una propiedad, ademas usa un callback a este componente-->
 <!--En este caso estaria renderizando aqui el componente de menu aparte del componente base, ya que asi se especifico en el home-routing.module-->
 <router-outlet name="menu-outlet"></router-outlet> <!--Componente que se encarga de cargar el componente que se le pase por la ruta (necesita importarse tambien), para que cargue en todas las paginas habria que ponerlo en el html inicial-->
 
@@ -26,3 +26,6 @@
 <a [routerLink]="['/lista']" [queryParams]="{parametroUrl: 'aa'}">route</a> <!--Enlace a x ruta con parametros de url-->
 
 <div (click)="funcion($event)">boton</div> <!--Ejecutando una funcion del componente con eventos html-->
+
+<input (ngModelChange)="actualizarInput($event)" [(ngModel)]="variableVinculada" type="text"> {{ variableVinculada }}<br> <!--Vinculando una variable del html (value) al componente typescript-->
+

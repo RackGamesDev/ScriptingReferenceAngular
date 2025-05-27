@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class HomeModule { 
