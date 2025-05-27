@@ -40,7 +40,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public items = [1, 2, 3, 4, 5];
   public textos = ['aa', 'bb', 'cc', 'dd', 'ee'];
   public variableTardia!: string;
-  public canciones: { data: Array<CancionModel> } = require('src/app/data/canciones.json'); //Importando un json en base al modelo
+  //public canciones: { data: Array<CancionModel> } = require('src/app/data/canciones.json'); //Importando un json en base al modelo
   public valorLento = of("hola"); //Valor que en teoria tarda en conseguirse (asincrono)
 
   ngOnInit(): void { //Cuando se inicialice el componente
@@ -83,8 +83,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     console.log("componente destruido");
   } //Tambien estan ngOnChanges, ngDoCheck, ngAfterContentInit, ngAfterContentChecked, ngAfterViewInit, ngAfterViewChecked
 
-  funcion(event: Event): void { //Esta funcion se puede llamar desde el html
-    console.log("funcion llamada " + event); //Event tiene informaicon del evento que llamo desde el html
+  funcion(event: MouseEvent): void { //Esta funcion se puede llamar desde el html (hay muchos mas eventos, como click, mouseover, keyup, etc)
+    console.log("funcion llamada " + event.clientX + " " + event.clientY, event); //Event tiene informaicon del evento que llamo desde el html
     this.router.navigate(['/lista'], { queryParams: { variable: 'hola', numero: 4 } }); //Redirecciona a la ruta de login usando el router del constructor (/lista?variable=hola&numero=4)
   
     this.cookieService.set('nombre', 'valor', Date.now() + 1); //Guardando una cookie que expira magnana, legalmente hay que avisar y pedir permiso

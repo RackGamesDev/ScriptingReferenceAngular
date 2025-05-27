@@ -26,7 +26,7 @@
 
 <a [routerLink]="['/lista']" [queryParams]="{parametroUrl: 'aa'}">route</a> <!--Enlace a x ruta con parametros de url-->
 
-<div (click)="funcion($event)">boton</div> <!--Ejecutando una funcion del componente con eventos html-->
+<div (click)="funcion($event)">boton</div> <!--Ejecutando una funcion del componente con eventos html, hay mucho mas eventos (como en javascript)-->
 
 <input (ngModelChange)="actualizarInput($event)" [(ngModel)]="variableVinculada" type="text"> {{ variableVinculada }}<br> <!--Vinculando una variable del html (value) al componente typescript-->
 
