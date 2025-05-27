@@ -40,7 +40,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public items = [1, 2, 3, 4, 5];
   public textos = ['aa', 'bb', 'cc', 'dd', 'ee'];
   public variableTardia!: string;
-  public canciones: { data: Array<CancionModel> } = require('src/app/data/canciones.json'); //Importando un json en base al modelo
+  //public canciones: { data: Array<CancionModel> } = require('src/app/data/canciones.json'); //Importando un json en base al modelo
   public valorLento = of("hola"); //Valor que en teoria tarda en conseguirse (asincrono)
 
   ngOnInit(): void { //Cuando se inicialice el componente
