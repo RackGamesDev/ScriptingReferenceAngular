@@ -7,6 +7,7 @@ import { PLATFORM_ID } from '@angular/core';
 import { AutentificacionService } from '@shared/services/autentificacion/autentificacion.service';
 import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cliente-peticiones.service';
 import { CookieService } from 'ngx-cookie-service';
+import { SegnalesService } from '@shared/services/Segnales/segnales.service';
 
 
 describe('HomePageComponent', () => {
@@ -22,7 +23,8 @@ describe('HomePageComponent', () => {
         { provide: PLATFORM_ID, useValue: 'browser' },
         { provide: AutentificacionService, useValue: {} },
         { provide: ClientePeticionesService, useValue: {} },
-        { provide: CookieService, useValue: {} }
+        { provide: CookieService, useValue: {} },
+        { provide: SegnalesService, useValue: {} }
       ]
     })
     .compileComponents();

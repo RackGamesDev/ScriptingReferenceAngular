@@ -13,6 +13,7 @@ import { ClientePeticionesService } from '@shared/services/cliente-peticiones/cl
 import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm install ngx-cookie-service --save
 import { FormsModule, NgForm } from '@angular/forms';
 import { of } from 'rxjs';
+import { SegnalesService } from '@shared/services/Segnales/segnales.service';
 
 
 
@@ -28,7 +29,7 @@ import { of } from 'rxjs';
 export class HomePageComponent implements OnInit, OnDestroy {
 [x: string]: any;
   //Inyeccion de dependencias al componente
-  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {
+  constructor(private router: Router, private autentificacionService: AutentificacionService, @Inject(PLATFORM_ID) private platformId: Object, private clientePeticionesService: ClientePeticionesService, private activatedRoute: ActivatedRoute, private cookieService: CookieService, private segnalesService:SegnalesService) {
     if (isPlatformBrowser(this.platformId)) {
       console.log('ejecutando en el navegador');
     }
@@ -78,6 +79,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }, complete: () => { //Cuando finalice la peticion
       console.log("Peticion API finalizada");
     }});
+
+    
+    
+
   }
 
   ngOnDestroy(): void { //Cuando se destruya el componente (cuando se navega a otra ruta o se elimina)
