@@ -12,6 +12,8 @@ Para usarlo:
 - `ng generate service shared/services/autentificacion/Autentificacion` Crea un servicio dentro del módulo (una clase con distintas funciones y variables para un uso concreto que se puede ir usando por la aplicación)
 - `ng generate guard core/guards/session/Session` (CanActivate) Crea un guard típico (comprobante para proteger una ruta)
 - `ng generate interceptor core/interceptors/inject-session/InjectSession` Crea un middleware para alterar las peticiones http
+- También se pueden generar clases, enums, interfaces, archivos de environment, nuevas carpetas aparte de app, librerias (código reusable que puede contener cualquier objeto antes mencionado)
+
 
 ## Funcionamiento
 Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden mediante rutas, y estos modulos pueden mostrar componentes (html), los componentes pueden ser propios de cada modulo o ser compartidos (carpeta shared). Los modulos pueden usar componentes y si tienen el routing (x-routing.module.ts) pueden redicirig a otros modulos/componentes con sub paths
@@ -36,6 +38,7 @@ Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden 
 - package.json: configuración de NodeJS
 - tsconfig.json: configuración del compilador de Typescript
 - Para el testing, se generan archivos .spec.ts junto a los objetos creados con ng generate, se pueden usar testers como karma, jasmine o jest, se ejecutan con `ng test` (hay que arreglar primero todos los .spec.ts, cosa que no se hizo en este proyecto debido a la falta de recursos)
+- Una vez hecho el testing y comporobado que todo está bien
 
 ## License
 This project is licensed under the GNU General Public License v3.0.  
