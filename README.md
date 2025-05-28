@@ -38,7 +38,7 @@ Se crean módulos (que pueden tener componentes dentro) a los cuales se acceden 
 - package.json: configuración de NodeJS
 - tsconfig.json: configuración del compilador de Typescript
 - Para el testing, se generan archivos .spec.ts junto a los objetos creados con ng generate, se pueden usar testers como karma, jasmine o jest, se ejecutan con `ng test` (hay que arreglar primero todos los .spec.ts, cosa que no se hizo en este proyecto debido a la falta de recursos)
-- No se pueden hacer builds con angular 17 o mayor de momento
+- No se pueden hacer builds con Angular 17 o mayor de momento, es necesario hacer downgrade a Angular 16 o anterior
 
 ## License
 This project is licensed under the GNU General Public License v3.0.  
