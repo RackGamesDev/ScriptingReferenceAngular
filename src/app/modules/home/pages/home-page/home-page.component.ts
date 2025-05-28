@@ -14,6 +14,7 @@ import { CookieService } from 'ngx-cookie-service'; //Hay que instalarlo con npm
 import { FormsModule, NgForm } from '@angular/forms';
 import { of } from 'rxjs';
 import { SegnalesService } from '@shared/services/Segnales/segnales.service';
+import { ReceptorArchivoComponent } from '@shared/components/receptor-archivo/receptor-archivo.component';
 
 
 
@@ -22,7 +23,7 @@ import { SegnalesService } from '@shared/services/Segnales/segnales.service';
   standalone: true,
   //Importando funciones para el componente
   imports: [NgForOf, RouterOutlet, BotonComponent, NgIf, NgTemplateOutlet, NgClass, RouterModule, 
-    UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective, FormsModule, AsyncPipe],
+    UpperCasePipe, LowerCasePipe, OrderListPipe, ImgBrokenDirective, FormsModule, AsyncPipe, ReceptorArchivoComponent],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
@@ -80,9 +81,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
       console.log("Peticion API finalizada");
     }});
 
-    
-    
-
   }
 
   ngOnDestroy(): void { //Cuando se destruya el componente (cuando se navega a otra ruta o se elimina)
@@ -104,4 +102,15 @@ export class HomePageComponent implements OnInit, OnDestroy {
     console.log("Desde el componente padre" + evento);
   }
   
+  public descargarArchivo():void { //Funcion que provoca la descarga de un archivo
+    const data = 'Contenido dinamico'; //Contenido
+    const blob = new Blob([data], { type: 'text/plain' }); //Tipo de archivo
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'dinamico.txt'; //Nombre por defecto
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
 }

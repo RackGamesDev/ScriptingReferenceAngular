@@ -31,3 +31,10 @@
 
 <input (ngModelChange)="actualizarInput($event)" [(ngModel)]="variableVinculada" type="text"> {{ variableVinculada }}<br> <!--Vinculando una variable del html (value) al componente typescript-->
 
+<br>
+<a href="assets/archivo.txt" download="archivo.txt"> <!--Para descargar un archivo ubicado en este mismo componente (un archivo estatico en el proyecto o url)-->
+  <button>descargar archivo</button>
+</a>
+<button (click)="descargarArchivo()">Descargar archivo dinamico</button>
+<br>
+<app-receptor-archivo></app-receptor-archivo>

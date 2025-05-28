@@ -1,0 +1,41 @@
+.upload-container {
+  width: 350px;
+  margin: 2em auto;
+  font-family: Arial, sans-serif;
+}
+
+.dropzone {
+  border: 2px dashed #999;
+  border-radius: 8px;
+  padding: 2em;
+  text-align: center;
+  background: #f9f9f9;
+  /*transition: background 0.2s, border-color 0.2s;*/
+}
+
+.dropzone.dragging {
+  background: #e3f2fd;
+  border-color: #1976d2;
+}
+
+.file-label {
+  display: inline-block;
+  margin-top: 1em;
+  cursor: pointer;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.file-label input[type="file"] {
+  display: none;
+}
+
+.progress {
+  margin-top: 1em;
+  color: #1976d2;
+}
+
+.message {
+  margin-top: 1em;
+  color: green;
+}

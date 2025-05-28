@@ -1,0 +1,16 @@
+<p>Arrastra o selecciona el archivo a subir</p>
+<div class="upload-container">
+  <div class="dropzone" [class.dragging]="isDragging" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+    <p>Arrastra un archivo o</p>
+    <label class="file-label">
+      <input type="file" (change)="onFileSelected($event)" />
+      <span>Elige alguno</span>
+    </label>
+  </div>
+  <div *ngIf="uploadProgress !== null" class="progress">
+    Subiendo: {{uploadProgress}}%
+  </div>
+  <div *ngIf="uploadMessage" class="message">
+    {{uploadMessage}}
+  </div>
+</div>
